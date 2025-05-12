@@ -4,7 +4,9 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 
 def caesar(orignal_text, shift_amount, encode_or_decode):
     text = ""
-    
+    if encode_or_decode == "decode": 
+        shift_amount *= -1
+        
     for letter in orignal_text:
         if letter == " ":
             text += " "
@@ -14,11 +16,7 @@ def caesar(orignal_text, shift_amount, encode_or_decode):
             text += letter
             continue
         
-        if encode_or_decode == "decode": 
-            shifted_position = alphabet.index(letter) - shift_amount
-        elif encode_or_decode == "encode":
-            shifted_position = alphabet.index(letter) + shift_amount
-        
+        shifted_position = alphabet.index(letter) + shift_amount
         shifted_position %= len(alphabet)
         text += alphabet[shifted_position]
     print(f"\n{text}")
@@ -34,4 +32,5 @@ while should_continue:
     nu = input("Do you want to continue. Yes/No? ").lower()
     if nu == "no":
         should_continue = False
+        
         

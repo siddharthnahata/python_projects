@@ -20,19 +20,24 @@ lives_count = 6
 while not game_over:
     entered_input = input("\nPlease enter a letter.\n")
     display = ""
+    
+    
     if len(entered_input) >= 2:
         print("Please enter single word at a time. You Lost a life")
+    
+    if entered_input in display_list:
+        print(f"You already have letter '{entered_input}'" )
     
     for letter in word:
         if entered_input == letter:
             display += entered_input
-            display_list.append(letter)
+            display_list.append(letter) 
         elif letter in display_list:
             display += letter
         else: 
             display += "-"
             
-    
+   
     print(display)
     
     if entered_input not in word:
